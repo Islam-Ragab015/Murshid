@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:murshid/core/utils/app_strings.dart';
+
 import 'package:murshid/core/utils/app_text_styles.dart';
-import 'package:murshid/core/widgets/custom_btn.dart';
+
 import 'package:murshid/features/on_boarding/data/models/on_boarding_model.dart';
 import 'package:murshid/features/on_boarding/presentation/views/widgets/custom_somth_page_indicator.dart';
 
 class OnBoardingWidgetBody extends StatelessWidget {
-  OnBoardingWidgetBody({super.key});
-  final PageController _controller = PageController();
-
+  const OnBoardingWidgetBody(
+      {super.key, required this.controller, this.onPageChanged});
+  final PageController controller;
+  final Function(int)? onPageChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 600,
+      height: 500,
       child: PageView.builder(
+        onPageChanged: onPageChanged,
         physics: const BouncingScrollPhysics(),
-        controller: _controller,
+        controller: controller,
         itemCount: onBoardingDataList.length,
         itemBuilder: (context, index) => Column(
           children: [
@@ -31,7 +33,7 @@ class OnBoardingWidgetBody extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            CustomSmothPageIndicator(controller: _controller),
+            CustomSmothPageIndicator(controller: controller),
             const SizedBox(
               height: 20,
             ),
@@ -53,12 +55,6 @@ class OnBoardingWidgetBody extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 onBoardingDataList[index].subTitle,
                 style: CustomTextStyles.poppins300style16),
-            const SizedBox(
-              height: 40,
-            ),
-            const CustomBtn(
-              text: AppStrings.next,
-            ),
           ],
         ),
       ),

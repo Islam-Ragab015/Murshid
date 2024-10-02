@@ -1,8 +1,10 @@
 ✨ **Murshid** - Flutter Application 📱
 
+
 Welcome to *Murshid*! 🌍
 
 A highly modular, scalable, and beautifully crafted Flutter app that lets users dive deep into the world of history while providing a seamless user experience. Built with clean architecture and clean code principles, Murshid is designed to be both developer-friendly and user-centric.
+
 
 🌟 **Features**
 
@@ -17,6 +19,7 @@ A highly modular, scalable, and beautifully crafted Flutter app that lets users 
 🛍️ Bazaar: Browse and buy historical books, souvenirs, and more from our specialized marketplace.
 
 🛒 Cart & Checkout: Easy-to-use cart system with fast and secure payment gateways.
+
 
 
 🧑‍💻 **Clean Code Practices** 🧹
@@ -34,6 +37,7 @@ Murshid adheres to best-in-class coding standards and practices to ensure:
 📖 Readability: Simple, meaningful code with concise documentation to ensure clarity and extensibility.
 
 
+
 🧩 **Core Modules**
 
 🔐 Authentication: User login, sign-up, and password management using auth_cubit for efficient state handling.
@@ -49,6 +53,7 @@ Murshid adheres to best-in-class coding standards and practices to ensure:
 🛠️ Onboarding: A welcoming experience for new users, ensuring they get the most out of Murshid from the start.
 
 
+
 🛠️ **Technologies Used**
 
 Flutter 🧑‍🎨: A fast and expressive cross-platform toolkit.
@@ -58,6 +63,7 @@ Firebase 🔥: Robust backend for user authentication and database management.
 Dart 🏹: Powerful language ensuring smooth app performance and rich functionality.
 
 Cubit/BLoC ⚡: State management for predictable and highly maintainable app states.
+
 
 
 🚀 **Getting Started**
@@ -77,10 +83,12 @@ Follow these steps to set up Murshid on your machine and start contributing:
 
     flutter run
 
+
     
 🤝 **Contributing**
 
 We love contributions! Whether it's reporting bugs, suggesting new features, or fixing issues, your help is always welcome. Please ensure your code adheres to our clean code principles, as this will ensure maintainability for everyone. Create a pull request, and let's make history together! 🏛️
+
 
 
 Happy coding! ✨ Let's build the future, one historical fact at a time.

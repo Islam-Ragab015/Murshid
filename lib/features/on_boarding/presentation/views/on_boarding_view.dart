@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:murshid/core/functions/navigation.dart';
+import 'package:murshid/features/on_boarding/presentation/views/functions/on_boarding.dart';
 import 'package:murshid/features/on_boarding/presentation/views/widgets/cusom_nav_bar.dart';
 import 'package:murshid/features/on_boarding/presentation/views/widgets/get_buttons.dart';
 import 'package:murshid/features/on_boarding/presentation/views/widgets/on_bording_widget_body.dart';
@@ -29,6 +30,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 height: 20,
               ),
               CustomNavBar(onTap: () {
+                onBoardingVisited();
                 customReplacementNavigate(context, "/signUp");
               }),
               OnBoardingWidgetBody(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:murshid/core/functions/navigation.dart';
+import 'package:murshid/core/utils/app_colors.dart';
 import 'package:murshid/core/utils/app_strings.dart';
 import 'package:murshid/core/utils/app_text_styles.dart';
 import 'package:murshid/core/widgets/custom_btn.dart';
 import 'package:murshid/features/on_boarding/data/models/on_boarding_model.dart';
+import 'package:murshid/features/on_boarding/presentation/views/functions/on_boarding.dart';
 
 class GetButton extends StatelessWidget {
   const GetButton(
@@ -18,6 +20,7 @@ class GetButton extends StatelessWidget {
           CustomBtn(
               text: AppStrings.createAccount,
               onpressed: () {
+                onBoardingVisited();
                 customReplacementNavigate(context, "/signUp");
               }),
           const SizedBox(
@@ -25,12 +28,14 @@ class GetButton extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
+              onBoardingVisited();
               customReplacementNavigate(context, "/signIn");
             },
             child: Text(
               AppStrings.loginNow,
               style: CustomTextStyles.poppins300style16.copyWith(
                 fontWeight: FontWeight.w400,
+                color: AppColors.deepBrown,
               ),
             ),
           ),

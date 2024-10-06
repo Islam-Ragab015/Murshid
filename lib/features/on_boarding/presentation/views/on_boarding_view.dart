@@ -21,13 +21,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 12,
+            horizontal: 16,
           ),
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               CustomNavBar(onTap: () {
                 onBoardingVisited();
@@ -41,12 +41,13 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 },
                 controller: _controller,
               ),
+              const SizedBox(height: 88),
               GetButton(
                 currentIndex: currentPage,
                 controller: _controller,
               ),
               const SizedBox(
-                height: 20,
+                height: 17,
               ),
             ],
           ),

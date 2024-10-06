@@ -74,7 +74,7 @@ class SignUpView extends StatelessWidget {
             const SliverToBoxAdapter(
               child: HaveAnAccount(
                   text1: AppStrings.alreadyHaveAnAccount,
-                  text2: AppStrings.signUp),
+                  text2: AppStrings.signIn),
             ),
           ],
         ),

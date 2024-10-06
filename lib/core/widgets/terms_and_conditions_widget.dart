@@ -3,8 +3,8 @@ import 'package:murshid/core/utils/app_strings.dart';
 import 'package:murshid/core/utils/app_text_styles.dart';
 import 'package:murshid/core/widgets/custom_check_box.dart';
 
-class TermsAndCondition extends StatelessWidget {
-  const TermsAndCondition({super.key});
+class TermsAndConditions extends StatelessWidget {
+  const TermsAndConditions({super.key});
 
   @override
   Widget build(BuildContext context) {

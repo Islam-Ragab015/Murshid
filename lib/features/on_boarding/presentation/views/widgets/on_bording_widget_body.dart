@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:murshid/core/utils/app_text_styles.dart';
-
 import 'package:murshid/features/on_boarding/data/models/on_boarding_model.dart';
 import 'package:murshid/features/on_boarding/presentation/views/widgets/custom_somth_page_indicator.dart';
 

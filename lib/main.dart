@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:murshid/core/database/cache/cache_helper.dart';
 import 'package:murshid/core/routes/app_router.dart';
 import 'package:murshid/core/services/service_located.dart';
 import 'package:murshid/core/utils/app_colors.dart';
+import 'package:murshid/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   setupServiceLocator();
   await getIt<CacheHelper>().init();
   runApp(const Murshid());

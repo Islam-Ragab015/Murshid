@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137733064772",
+    "project_id": "murshid-ec335",
+    "storage_bucket": "murshid-ec335.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137733064772:android:30eeb04cc8c3200189d411",
+        "android_client_info": {
+          "package_name": "com.example.murshid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG1IxR17HZ3c3-_00Gv8StHxc8Jv04pOE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

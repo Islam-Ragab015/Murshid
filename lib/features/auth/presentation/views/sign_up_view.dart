@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:murshid/core/utils/app_colors.dart';
 import 'package:murshid/core/utils/app_strings.dart';
-import 'package:murshid/core/utils/app_text_styles.dart';
 import 'package:murshid/core/widgets/custom_btn.dart';
 import 'package:murshid/core/widgets/custom_text_field.dart';
+import 'package:murshid/core/widgets/have_an_account.dart';
 import 'package:murshid/core/widgets/terms_and_conditions_widget.dart';
 import 'package:murshid/features/auth/presentation/widgets/welcome_text_widget.dart';
 
@@ -79,27 +78,6 @@ class SignUpView extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class HaveAnAccount extends StatelessWidget {
-  const HaveAnAccount({super.key, required this.text1, required this.text2});
-  final String text1, text2;
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      child: Text.rich(TextSpan(children: [
-        TextSpan(
-          text: text1,
-          style: CustomTextStyles.poppins400style12,
-        ),
-        TextSpan(
-          text: text2,
-          style: CustomTextStyles.poppins400style12
-              .copyWith(color: AppColors.lightGrey),
-        ),
-      ])),
     );
   }
 }

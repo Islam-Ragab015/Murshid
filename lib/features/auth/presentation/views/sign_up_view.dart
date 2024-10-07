@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murshid/core/utils/app_strings.dart';
-import 'package:murshid/core/widgets/custom_btn.dart';
-import 'package:murshid/core/widgets/custom_text_field.dart';
-import 'package:murshid/core/widgets/have_an_account.dart';
-import 'package:murshid/core/widgets/terms_and_conditions_widget.dart';
+import 'package:murshid/features/auth/presentation/widgets/custom_sign_up_form.dart';
+import 'package:murshid/features/auth/presentation/widgets/have_an_account.dart';
 import 'package:murshid/features/auth/presentation/widgets/welcome_text_widget.dart';
 
 class SignUpView extends StatelessWidget {
@@ -11,66 +9,33 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
           slivers: <Widget>[
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: SizedBox(
                 height: 150,
               ),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: WlcomeTextWidget(text: AppStrings.welcome),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: SizedBox(
                 height: 16,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: AppStrings.fristName,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: AppStrings.fristName,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: AppStrings.lastName,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: AppStrings.emailAddress,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: CustomTextField(
-                labelText: AppStrings.password,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: TermsAndConditions(),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 88,
               ),
             ),
             SliverToBoxAdapter(
-              child: CustomBtn(onpressed: () {}, text: AppStrings.signUp),
+              child: CustomSignUpForm(),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: SizedBox(
                 height: 16,
               ),
             ),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: HaveAnAccount(
                   text1: AppStrings.alreadyHaveAnAccount,
                   text2: AppStrings.signIn),

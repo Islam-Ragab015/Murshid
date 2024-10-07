@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:murshid/core/functions/navigation.dart';
 import 'package:murshid/core/utils/app_strings.dart';
 import 'package:murshid/features/auth/presentation/widgets/custom_sign_up_form.dart';
 import 'package:murshid/features/auth/presentation/widgets/have_an_account.dart';
@@ -9,28 +10,28 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: CustomScrollView(
           slivers: <Widget>[
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 150,
               ),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: WlcomeTextWidget(text: AppStrings.welcome),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 16,
               ),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: CustomSignUpForm(),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SizedBox(
                 height: 16,
               ),
@@ -38,9 +39,12 @@ class SignUpView extends StatelessWidget {
             SliverToBoxAdapter(
               child: HaveAnAccount(
                   text1: AppStrings.alreadyHaveAnAccount,
-                  text2: AppStrings.signIn),
+                  text2: AppStrings.signIn,
+                  onTap: () {
+                    customNavigate(context, "/signIn");
+                  }),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
                 child: SizedBox(
               height: 16,
             )),

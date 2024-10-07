@@ -11,11 +11,13 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText,
     this.suffixIcon,
   });
+
   final String labelText;
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
   final bool? obscureText;
   final Widget? suffixIcon;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,11 +34,13 @@ class CustomTextFormField extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted,
         obscureText: obscureText ?? false,
         decoration: InputDecoration(
-            labelText: labelText,
-            labelStyle: CustomTextStyles.poppins500style18,
-            border: getBorderStyile(),
-            enabledBorder: getBorderStyile(),
-            focusedBorder: getBorderStyile()),
+          labelText: labelText,
+          labelStyle: CustomTextStyles.poppins500style18,
+          border: getBorderStyile(),
+          enabledBorder: getBorderStyile(),
+          focusedBorder: getBorderStyile(),
+          suffixIcon: suffixIcon, // Add the suffixIcon here
+        ),
       ),
     );
   }

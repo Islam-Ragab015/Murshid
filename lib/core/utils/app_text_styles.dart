@@ -57,4 +57,10 @@ abstract class CustomTextStyles {
     color: Colors.white,
     fontFamily: "Pacifico",
   );
+  static final saira700style32 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+    color: AppColors.offWhite,
+    fontFamily: "Saira",
+  );
 }

@@ -1,8 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:murshid/core/functions/navigation.dart';
 
-class SignInView extends StatelessWidget {
-  const SignInView({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +12,15 @@ class SignInView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              customNavigate(context, "/signUp");
+              FirebaseAuth.instance.signOut();
+              customReplacementNavigate(context, "/signIn");
             },
-            icon: const Icon(Icons.login),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),
       body: const Center(
-        child: Text("Sign In"),
+        child: Text("Home"),
       ),
     );
   }

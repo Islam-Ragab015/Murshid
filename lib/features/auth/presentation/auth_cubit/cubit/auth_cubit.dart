@@ -1,20 +1,22 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:murshid/features/auth/presentation/auth_cubit/cubit/auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  late String? emailAddress;
-  late String? firstName;
-  late String? lastName;
-  late String? password;
-
+  String? emailAddress;
+  String? firstName;
+  String? lastName;
+  String? password;
+  bool? updateTermsAndConditionsCheckBoxValue = false;
+  bool? obscurePasswordTextValue = true;
+  GlobalKey<FormState> signUpFormKey = GlobalKey();
   signUpWithEmailAndPasswoed() async {
     try {
       emit(SignUpLoadingState());
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
@@ -36,5 +38,19 @@ class AuthCubit extends Cubit<AuthState> {
         emit(SignUpFailureState(errorMessage: e.toString()));
       }
     }
+  }
+
+  updateTermsAndConditionsCheckBox({required newvalue}) {
+    updateTermsAndConditionsCheckBoxValue = newvalue;
+    emit(TermsAndConditionsUpdateState());
+  }
+
+  void obscurePasswordText() {
+    if (obscurePasswordTextValue == true) {
+      obscurePasswordTextValue = false;
+    } else {
+      obscurePasswordTextValue = true;
+    }
+    emit(ObscurePasswordTextUpdateState());
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:murshid/core/utils/app_colors.dart';
 import 'package:murshid/core/utils/app_strings.dart';
 import 'package:murshid/core/widgets/custom_btn.dart';
 import 'package:murshid/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
@@ -15,32 +16,45 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
+        AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
+
         return Form(
+          key: authCubit.signUpFormKey,
           child: Column(
             children: [
               CustomTextFormField(
                 labelText: AppStrings.fristName,
                 onChanged: (fristName) {
-                  BlocProvider.of<AuthCubit>(context).firstName = fristName;
+                  authCubit.firstName = fristName;
                 },
               ),
               CustomTextFormField(
                 labelText: AppStrings.lastName,
                 onChanged: (lastName) {
-                  BlocProvider.of<AuthCubit>(context).lastName = lastName;
+                  authCubit.lastName = lastName;
                 },
               ),
               CustomTextFormField(
                 labelText: AppStrings.emailAddress,
                 onChanged: (emailAddress) {
-                  BlocProvider.of<AuthCubit>(context).emailAddress =
-                      emailAddress;
+                  authCubit.emailAddress = emailAddress;
                 },
               ),
               CustomTextFormField(
                 labelText: AppStrings.password,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    authCubit.obscurePasswordTextValue == true
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                  ),
+                  onPressed: () {
+                    authCubit.obscurePasswordText();
+                  },
+                ),
+                obscureText: authCubit.obscurePasswordTextValue,
                 onChanged: (password) {
-                  BlocProvider.of<AuthCubit>(context).password = password;
+                  authCubit.password = password;
                 },
               ),
               const TermsAndConditions(),
@@ -48,9 +62,17 @@ class CustomSignUpForm extends StatelessWidget {
                 height: 88,
               ),
               CustomBtn(
+                  color:
+                      authCubit.updateTermsAndConditionsCheckBoxValue == false
+                          ? AppColors.grey
+                          : null,
                   onpressed: () {
-                    BlocProvider.of<AuthCubit>(context)
-                        .signUpWithEmailAndPasswoed();
+                    if (authCubit.updateTermsAndConditionsCheckBoxValue ==
+                        true) {
+                      if (authCubit.signUpFormKey.currentState!.validate()) {
+                        authCubit.signUpWithEmailAndPasswoed();
+                      }
+                    }
                   },
                   text: AppStrings.signUp),
             ],

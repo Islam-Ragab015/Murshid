@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:murshid/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
-import 'package:murshid/features/auth/presentation/views/forget_password.dart';
+import 'package:murshid/features/auth/presentation/views/forget_password_view.dart';
 import 'package:murshid/features/auth/presentation/views/sign_in_view.dart';
 import 'package:murshid/features/auth/presentation/views/sign_up_view.dart';
 import 'package:murshid/features/home/presentation/views/home_view.dart';

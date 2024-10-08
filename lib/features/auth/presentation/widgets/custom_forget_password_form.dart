@@ -15,13 +15,12 @@ class CustomForgetPasswordForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is PasswordResetEmailSentState) {
+        if (state is ResetPasswordSuccessState) {
           // Show a success toast when the password reset email is sent
           showToast("Password reset link sent to your email.");
-        } else if (state is SignInFailureState) {
-          showToast(
-            state.errorMessage,
-          );
+        } else if (state is ResetPasswordFailureState) {
+          // Show an error toast with the failure message
+          showToast(state.errorMessage);
         }
       },
       builder: (context, state) {
@@ -42,19 +41,19 @@ class CustomForgetPasswordForm extends StatelessWidget {
                 const SizedBox(
                   height: 129,
                 ),
-                state is SignInLoadingState
-                    ? CircularProgressIndicator(
-                        color: AppColors.primaryColor,
-                      )
-                    : CustomBtn(
-                        onpressed: () {
-                          if (authCubit.signInFormKey.currentState!
-                              .validate()) {
-                            authCubit.sendPasswordResetEmail();
-                          }
-                        },
-                        text: AppStrings.sendResentPasswordLink,
-                      ),
+                if (state is ResetPasswordLoadingState)
+                  CircularProgressIndicator(
+                    color: AppColors.primaryColor,
+                  )
+                else
+                  CustomBtn(
+                    onpressed: () async {
+                      if (authCubit.signInFormKey.currentState!.validate()) {
+                        await authCubit.sendPasswordResetEmail();
+                      }
+                    },
+                    text: AppStrings.sendResentPasswordLink,
+                  ),
               ],
             ),
           ),

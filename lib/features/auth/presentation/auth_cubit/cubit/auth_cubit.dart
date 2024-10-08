@@ -17,7 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> signInFormKey = GlobalKey();
 
   // Sign up function with enhanced error handling
-  signUpWithEmailAndPassword() async {
+  Future<void> signUpWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -28,33 +28,37 @@ class AuthCubit extends Cubit<AuthState> {
       await verfiyEmail();
       emit(SignUpSuccsessState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        emit(SignUpFailureState(
-            errorMessage: 'The password provided is too weak.'));
-      } else if (e.code == 'email-already-in-use') {
-        emit(SignUpFailureState(
-            errorMessage: 'The account already exists for that email.'));
-      } else if (e.code == 'invalid-email') {
-        emit(SignUpFailureState(
-            errorMessage: 'The email address is not valid.'));
-      } else if (e.code == 'operation-not-allowed') {
-        emit(SignUpFailureState(
-            errorMessage: 'Email/password accounts are not enabled.'));
-      } else if (e.code == 'network-request-failed') {
-        emit(SignUpFailureState(
-            errorMessage:
-                'Network error. Please check your internet connection.'));
-      } else {
-        emit(SignUpFailureState(
-            errorMessage: e.message ?? 'An unknown error occurred.'));
-      }
+      _signUpHandleException(e);
     } catch (e) {
       emit(SignUpFailureState(errorMessage: e.toString()));
     }
   }
 
+// Enhanced error handling
+  void _signUpHandleException(FirebaseAuthException e) {
+    if (e.code == 'weak-password') {
+      emit(SignUpFailureState(
+          errorMessage: 'The password provided is too weak.'));
+    } else if (e.code == 'email-already-in-use') {
+      emit(SignUpFailureState(
+          errorMessage: 'The account already exists for that email.'));
+    } else if (e.code == 'invalid-email') {
+      emit(SignUpFailureState(errorMessage: 'The email address is not valid.'));
+    } else if (e.code == 'operation-not-allowed') {
+      emit(SignUpFailureState(
+          errorMessage: 'Email/password accounts are not enabled.'));
+    } else if (e.code == 'network-request-failed') {
+      emit(SignUpFailureState(
+          errorMessage:
+              'Network error. Please check your internet connection.'));
+    } else {
+      emit(SignUpFailureState(
+          errorMessage: e.message ?? 'An unknown error occurred.'));
+    }
+  }
+
   // Sign in function with enhanced error handling
-  signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInLoadingState());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -99,36 +103,39 @@ class AuthCubit extends Cubit<AuthState> {
     emit(ObscurePasswordTextUpdateState());
   }
 
-  verfiyEmail() async {
+//  New method in AuthCubit to send email verification
+  Future<void> verfiyEmail() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 
-  // New method in AuthCubit to send password reset email
-  sendPasswordResetEmail() async {
+// New method in AuthCubit to send password reset email with better state management
+  Future<void> sendPasswordResetEmail() async {
     try {
-      emit(SignInLoadingState());
+      emit(ResetPasswordLoadingState()); // Start loading state
       await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
-      emit(PasswordResetEmailSentState());
+      emit(ResetPasswordSuccessState()); // Emit success state
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        emit(SignInFailureState(errorMessage: 'No user found for that email.'));
+        emit(ResetPasswordFailureState(
+            errorMessage: 'No user found for that email.'));
       } else if (e.code == 'invalid-email') {
-        emit(SignInFailureState(
+        emit(ResetPasswordFailureState(
             errorMessage: 'The email address is not valid.'));
       } else if (e.code == 'network-request-failed') {
-        emit(SignInFailureState(
+        emit(ResetPasswordFailureState(
             errorMessage:
                 'Network error. Please check your internet connection.'));
       } else {
-        emit(SignInFailureState(
+        emit(ResetPasswordFailureState(
             errorMessage: e.message ?? 'An unknown error occurred.'));
       }
     } catch (e) {
-      emit(SignInFailureState(errorMessage: e.toString()));
+      emit(ResetPasswordFailureState(errorMessage: e.toString()));
     }
   }
 
-  addUserPrfile() async {
+// New method in AuthCubit to add user profile
+  Future<void> addUserPrfile() async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     await users.add({
       "first_name": firstName,

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:murshid/core/functions/custom_toast.dart';
@@ -18,8 +19,9 @@ class CustomSignInForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInSuccsessState) {
-          showToast("Welcome Back!");
-          customReplacementNavigate(context, '/home');
+          FirebaseAuth.instance.currentUser!.emailVerified
+              ? customReplacementNavigate(context, '/home')
+              : showToast(" Please Verify Your Email. ");
         } else if (state is SignInFailureState) {
           showToast(state.errorMessage);
         }
@@ -68,7 +70,7 @@ class CustomSignInForm extends StatelessWidget {
                   : CustomBtn(
                       onpressed: () {
                         if (authCubit.signInFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPasswoed();
+                          authCubit.signInWithEmailAndPassword();
                         }
                       },
                       text: AppStrings.signIn),

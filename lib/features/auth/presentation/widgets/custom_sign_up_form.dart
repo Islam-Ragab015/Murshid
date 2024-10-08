@@ -18,8 +18,8 @@ class CustomSignUpForm extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpSuccsessState) {
-          showToast("Account Created Successfully");
-          customReplacementNavigate(context, '/home');
+          showToast("Successfully. Please verify your email.");
+          customReplacementNavigate(context, '/signIn');
         } else if (state is SignUpFailureState) {
           showToast(state.errorMessage);
         }
@@ -84,7 +84,7 @@ class CustomSignUpForm extends StatelessWidget {
                             true) {
                           if (authCubit.signUpFormKey.currentState!
                               .validate()) {
-                            authCubit.signUpWithEmailAndPasswoed();
+                            authCubit.signUpWithEmailAndPassword();
                           }
                         }
                       },

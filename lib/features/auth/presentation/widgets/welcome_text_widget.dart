@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:murshid/core/utils/app_text_styles.dart';
 
-class WlcomeTextWidget extends StatelessWidget {
-  const WlcomeTextWidget({super.key, required this.text});
+class WelcomeTextWidget extends StatelessWidget {
+  const WelcomeTextWidget({super.key, required this.text});
   final String text;
   @override
   Widget build(BuildContext context) {

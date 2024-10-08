@@ -22,7 +22,7 @@ class SignInView extends StatelessWidget {
             child: SizedBox(height: 32),
           ),
           const SliverToBoxAdapter(
-            child: WlcomeTextWidget(text: AppStrings.welcomeBack),
+            child: WelcomeTextWidget(text: AppStrings.welcomeBack),
           ),
           const SliverToBoxAdapter(
             child: Padding(

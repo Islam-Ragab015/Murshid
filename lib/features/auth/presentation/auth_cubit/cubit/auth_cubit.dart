@@ -100,4 +100,29 @@ class AuthCubit extends Cubit<AuthState> {
   verfiyEmail() async {
     await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
+
+  // New method in AuthCubit to send password reset email
+  sendPasswordResetEmail() async {
+    try {
+      emit(SignInLoadingState());
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+      emit(PasswordResetEmailSentState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailureState(errorMessage: 'No user found for that email.'));
+      } else if (e.code == 'invalid-email') {
+        emit(SignInFailureState(
+            errorMessage: 'The email address is not valid.'));
+      } else if (e.code == 'network-request-failed') {
+        emit(SignInFailureState(
+            errorMessage:
+                'Network error. Please check your internet connection.'));
+      } else {
+        emit(SignInFailureState(
+            errorMessage: e.message ?? 'An unknown error occurred.'));
+      }
+    } catch (e) {
+      emit(SignInFailureState(errorMessage: e.toString()));
+    }
+  }
 }

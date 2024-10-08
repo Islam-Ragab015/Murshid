@@ -67,7 +67,10 @@ abstract class AppStrings {
       resendCode = "Resend Code",
       verifyAccount = "Verify Account",
       enter4DigitCodeWeHaveSentTo = "Enter 4 digit code we have sent to ",
-      haventReceivedVerificationCode = "Haven’t received verification code?";
+      haventReceivedVerificationCode = "Haven’t received verification code?",
+      enterRegisteredEmail =
+          "Enter your registered email below to receive password reset instruction",
+      sendResentPasswordLink = "Send Resent Password Link";
 }
 
 abstract class FireBaseStrings {

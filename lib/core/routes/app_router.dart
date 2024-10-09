@@ -5,6 +5,7 @@ import 'package:murshid/features/auth/presentation/views/forget_password_view.da
 import 'package:murshid/features/auth/presentation/views/sign_in_view.dart';
 import 'package:murshid/features/auth/presentation/views/sign_up_view.dart';
 import 'package:murshid/features/home/presentation/views/home_view.dart';
+import 'package:murshid/features/home/presentation/widgets/home_sections/home_nav_bar_widget.dart';
 import 'package:murshid/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:murshid/features/splash/presentation/views/splash_view.dart';
 
@@ -32,7 +33,7 @@ final GoRouter router = GoRouter(routes: [
     ),
   ),
   GoRoute(
-    path: '/home',
-    builder: (context, state) => const HomeView(),
+    path: '/homeNavBar',
+    builder: (context, state) => const HomeNavBarWidget(),
   ),
 ]);

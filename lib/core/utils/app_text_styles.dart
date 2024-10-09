@@ -57,7 +57,7 @@ abstract class CustomTextStyles {
     color: Colors.white,
     fontFamily: "Pacifico",
   );
-  static final saira700style42 = TextStyle(
+  static final pacifico700style42 = TextStyle(
     fontSize: 42,
     fontWeight: FontWeight.bold,
     color: AppColors.offWhite,

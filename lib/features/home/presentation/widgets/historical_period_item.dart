@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:murshid/core/utils/app_assets.dart';
 import 'package:murshid/core/utils/app_colors.dart';
 import 'package:murshid/core/utils/app_text_styles.dart';
+import 'package:murshid/features/home/data/models/historical_periods_model.dart';
 
 class HistoricalPeriodItem extends StatelessWidget {
-  const HistoricalPeriodItem({super.key});
-
+  const HistoricalPeriodItem({super.key, required this.model});
+  final HistoricalPeriodsModel model;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,20 +17,20 @@ class HistoricalPeriodItem extends StatelessWidget {
           boxShadow: [
             BoxShadow(
                 color: AppColors.grey,
-                blurRadius: 4,
-                offset: const Offset(10, 10))
+                blurRadius: 8,
+                offset: const Offset(5, 5))
           ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
-          Container(
+          SizedBox(
             height: 47,
             width: 65,
             child: Text(
-              "Ancient Egypt",
+              model.name,
               style: CustomTextStyles.poppins500style18
                   .copyWith(fontSize: 16, color: AppColors.deepBrown),
               textAlign: TextAlign.center,
@@ -43,12 +43,10 @@ class HistoricalPeriodItem extends StatelessWidget {
             width: 47,
             decoration: BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage(
-                (Assets.assetsImagesFrame),
-              ),
+              image: NetworkImage(model.image),
             )),
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
         ],

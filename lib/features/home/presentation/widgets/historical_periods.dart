@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:murshid/core/utils/app_strings.dart';
+import 'package:murshid/core/widgets/custom_shimmer_category.dart';
 import 'package:murshid/features/home/data/models/historical_periods_model.dart';
 import 'package:murshid/features/home/presentation/widgets/historical_period_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,7 +15,7 @@ class HistoricalPeriods extends StatelessWidget {
         future: firestore.collection(FireBaseStrings.historicalPeriods).get(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Text("Something went wrong");
+            return Text(snapshot.error.toString());
           }
 
           if (snapshot.hasData && !snapshot.data!.docs[0].exists) {
@@ -45,7 +46,7 @@ class HistoricalPeriods extends StatelessWidget {
             );
           }
 
-          return const Text("loading");
+          return const CustomShimmerCategory();
         });
   }
 }

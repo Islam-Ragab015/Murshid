@@ -1,9 +1,5 @@
-✨ **Murshid** - Flutter Application 📱
-
-
-Welcome to *Murshid*! 🌍
-
-A highly modular, scalable, and beautifully crafted Flutter app that lets users dive deep into the world of history while providing a seamless user experience. Built with clean architecture and clean code principles, Murshid is designed to be both developer-friendly and user-centric.
+**Murshid** 📜
+Murshid is your digital guide to history, offering an immersive journey through the past with intuitive navigation, personalization, and a vibrant marketplace for historical enthusiasts. Whether you’re a history buff or a curious learner, Murshid provides a seamless way to explore eras, wars, and influential figures, all while maintaining clean, maintainable code standards.
 
 
 🌟 **Features**

@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:murshid/core/utils/app_colors.dart';
 import 'package:murshid/core/utils/app_text_styles.dart';
 import 'package:murshid/features/home/data/models/historical_periods_model.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HistoricalPeriodItem extends StatelessWidget {
   const HistoricalPeriodItem({super.key, required this.model});
@@ -38,13 +40,21 @@ class HistoricalPeriodItem extends StatelessWidget {
               maxLines: 2,
             ),
           ),
-          Container(
+          SizedBox(
             height: 64,
             width: 47,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              image: NetworkImage(model.image),
-            )),
+            child: CachedNetworkImage(
+              imageUrl: model.image,
+              placeholder: (context, url) => Shimmer.fromColors(
+                  baseColor: AppColors.grey,
+                  highlightColor: AppColors.offWhite,
+                  child: Container(
+                    width: 47,
+                    height: 64,
+                    color: AppColors.grey,
+                  )),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
           ),
           const SizedBox(
             width: 16,

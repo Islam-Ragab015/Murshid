@@ -37,7 +37,7 @@ class HistoricalPeriodItem extends StatelessWidget {
                   .copyWith(fontSize: 16, color: AppColors.deepBrown),
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+              maxLines: 3,
             ),
           ),
           SizedBox(

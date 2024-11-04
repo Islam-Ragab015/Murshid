@@ -4,7 +4,7 @@ import 'package:murshid/core/functions/custom_toast.dart';
 import 'package:murshid/core/widgets/custom_shimmer_category.dart';
 import 'package:murshid/features/home/presentation/cubit/home_cubit.dart';
 import 'package:murshid/features/home/presentation/cubit/home_state.dart';
-import 'package:murshid/features/home/presentation/widgets/historical_period_item.dart';
+import 'package:murshid/core/widgets/custom_data_list_view.dart';
 
 class HistoricalPeriods extends StatelessWidget {
   const HistoricalPeriods({super.key});
@@ -20,24 +20,8 @@ class HistoricalPeriods extends StatelessWidget {
       builder: (context, state) {
         return state is GetHistoricalPeriodsLoading
             ? const CustomShimmerCategory()
-            : SizedBox(
-                height: 96,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount:
-                      context.read<HomeCubit>().historicalPeriodsList.length,
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(width: 10);
-                  },
-                  clipBehavior: Clip.none,
-                  itemBuilder: (context, index) {
-                    return HistoricalPeriodItem(
-                      model: context
-                          .read<HomeCubit>()
-                          .historicalPeriodsList[index],
-                    );
-                  },
-                ),
+            : CustomDataListView(
+                dataList: context.read<HomeCubit>().historicalPeriodsList,
               );
       },
     );

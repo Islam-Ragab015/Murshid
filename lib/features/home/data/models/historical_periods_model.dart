@@ -8,7 +8,7 @@ class HistoricalPeriodsModel extends DataModel {
   HistoricalPeriodsModel({
     required super.name,
     required super.image,
-    required super.discription,
+    required super.description,
     required this.wars,
   });
 
@@ -17,8 +17,8 @@ class HistoricalPeriodsModel extends DataModel {
     return HistoricalPeriodsModel(
       name: jsonData[FireBaseStrings.name] ?? 'Unknown Period',
       image: jsonData[FireBaseStrings.image] ?? 'default_image.png',
-      discription:
-          jsonData[FireBaseStrings.discription] ?? 'No description available',
+      description:
+          jsonData[FireBaseStrings.description] ?? 'No description available',
       wars: warsList,
     );
   }

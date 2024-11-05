@@ -5,15 +5,15 @@ class WarsModel extends DataModel {
   WarsModel({
     required super.name,
     required super.image,
-    required super.discription,
+    required super.description,
   });
 
   factory WarsModel.fromlJson(Map<String, dynamic> jsonData) {
     return WarsModel(
       name: jsonData[FireBaseStrings.name] ?? 'Unknown War',
       image: jsonData[FireBaseStrings.image] ?? 'default_image.png',
-      discription:
-          jsonData[FireBaseStrings.discription] ?? 'No description available',
+      description:
+          jsonData[FireBaseStrings.description] ?? 'No description available',
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:murshid/core/widgets/custom_data_list_view_item.dart';
 class CustomDataListView extends StatelessWidget {
   const CustomDataListView({super.key, required this.dataList});
   final List<DataModel> dataList;
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 96,

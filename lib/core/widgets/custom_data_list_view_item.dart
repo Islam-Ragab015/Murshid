@@ -1,17 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:murshid/core/functions/navigation.dart';
 import 'package:murshid/core/models/data_model.dart';
 import 'package:murshid/core/utils/app_colors.dart';
 import 'package:murshid/core/utils/app_text_styles.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomDataListViewItem extends StatelessWidget {
-  const CustomDataListViewItem({super.key, required this.model});
+  const CustomDataListViewItem(
+      {super.key, required this.model, required this.routPath});
   final DataModel model;
+  final String routPath;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        customNavigate(context, routPath, extra: model);
+      },
       child: Container(
         height: 96,
         width: 164,

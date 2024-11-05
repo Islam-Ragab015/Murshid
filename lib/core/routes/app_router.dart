@@ -4,6 +4,8 @@ import 'package:murshid/features/auth/presentation/auth_cubit/cubit/auth_cubit.d
 import 'package:murshid/features/auth/presentation/views/forget_password_view.dart';
 import 'package:murshid/features/auth/presentation/views/sign_in_view.dart';
 import 'package:murshid/features/auth/presentation/views/sign_up_view.dart';
+import 'package:murshid/features/home/data/models/historical_periods_model.dart';
+import 'package:murshid/features/home/presentation/views/historical_periods_details_view.dart';
 import 'package:murshid/features/home/presentation/widgets/home_nav_bar_widget.dart';
 import 'package:murshid/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:murshid/features/splash/presentation/views/splash_view.dart';
@@ -34,5 +36,11 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: '/homeNavBar',
     builder: (context, state) => const HomeNavBarWidget(),
+  ),
+  GoRoute(
+    path: '/HistoricalPeriodsDetailsView',
+    builder: (context, state) => HistoricalPeriodsDetailsView(
+      model: state.extra as HistoricalPeriodsModel,
+    ),
   ),
 ]);

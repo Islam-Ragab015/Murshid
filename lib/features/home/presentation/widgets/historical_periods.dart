@@ -22,6 +22,7 @@ class HistoricalPeriods extends StatelessWidget {
             ? const CustomShimmerCategory()
             : CustomDataListView(
                 dataList: context.read<HomeCubit>().historicalPeriodsList,
+                routPath: '/HistoricalPeriodsDetailsView',
               );
       },
     );

@@ -19,7 +19,7 @@ class CustomShimmerCategory extends StatelessWidget {
             baseColor: AppColors.grey,
             highlightColor: AppColors.offWhite,
             child: Container(
-              width: 100,
+              width: 120,
               height: 100,
               decoration: BoxDecoration(
                 color: AppColors.grey,

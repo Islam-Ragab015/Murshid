@@ -36,8 +36,8 @@ class CustomDataListViewItem extends StatelessWidget {
               width: 16,
             ),
             SizedBox(
-              height: 47,
-              width: 65,
+              height: 60,
+              width: 85,
               child: Text(
                 model.name,
                 style: CustomTextStyles.poppins500style18

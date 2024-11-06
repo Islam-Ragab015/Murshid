@@ -9,7 +9,7 @@ class CustomCategoryListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 74,
+      width: 90,
       height: 150,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -23,7 +23,7 @@ class CustomCategoryListViewItem extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 74,
+            width: 120,
             height: 96,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
